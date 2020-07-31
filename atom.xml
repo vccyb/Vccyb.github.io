@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://vccyb.github.io/.</id>
     <title>Vccyb</title>
-    <updated>2020-07-31T02:29:42.938Z</updated>
+    <updated>2020-07-31T02:51:37.283Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://vccyb.github.io/."/>
     <link rel="self" href="https://vccyb.github.io/./atom.xml"/>
@@ -10,6 +10,17 @@
     <logo>https://vccyb.github.io/./images/avatar.png</logo>
     <icon>https://vccyb.github.io/./favicon.ico</icon>
     <rights>All rights reserved 2020, Vccyb</rights>
+    <entry>
+        <title type="html"><![CDATA[开始]]></title>
+        <id>https://vccyb.github.io/./post/kai-shi/</id>
+        <link href="https://vccyb.github.io/./post/kai-shi/">
+        </link>
+        <updated>2020-07-31T02:37:12.000Z</updated>
+        <content type="html"><![CDATA[<p>不知何时起，在生活的点点滴滴中，有时总是有一股表达的欲望。</p>
+<p>既然想表达，就希望能有一个自由的平台，思来想去，查阅了网上的各种资料，无论是个人建站，或者其他的那些博客平台也好，最终还是选择最简单的方式，简单意味着便捷高效，不用花费大量的时间在其他的技术方面，而可以专注的表达吧，简单也许就能让我坚持下去吧🤣</p>
+<p>不管怎么说，我的个人小站就这样简简单单的开始了，gogogo</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
         <id>https://vccyb.github.io/./post/hello-gridea/</id>
