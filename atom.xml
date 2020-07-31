@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://vccyb.github.io/mysite/</id>
+    <id>https://vccyb.github.io</id>
     <title>Vccyb</title>
-    <updated>2020-07-31T02:23:49.034Z</updated>
+    <updated>2020-07-31T02:26:30.157Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://vccyb.github.io/mysite/"/>
-    <link rel="self" href="https://vccyb.github.io/mysite/atom.xml"/>
+    <link rel="alternate" href="https://vccyb.github.io"/>
+    <link rel="self" href="https://vccyb.github.io/atom.xml"/>
     <subtitle>今日事，今日毕</subtitle>
-    <logo>https://vccyb.github.io/mysite/images/avatar.png</logo>
-    <icon>https://vccyb.github.io/mysite/favicon.ico</icon>
+    <logo>https://vccyb.github.io/images/avatar.png</logo>
+    <icon>https://vccyb.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Vccyb</rights>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>https://vccyb.github.io/mysite/post/hello-gridea/</id>
-        <link href="https://vccyb.github.io/mysite/post/hello-gridea/">
+        <id>https://vccyb.github.io/post/hello-gridea/</id>
+        <link href="https://vccyb.github.io/post/hello-gridea/">
         </link>
         <updated>2018-12-11T16:00:00.000Z</updated>
         <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
