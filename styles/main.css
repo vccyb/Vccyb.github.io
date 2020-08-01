@@ -2064,6 +2064,10 @@ p > code {
         width: 1080px;
         margin: 0 auto;
       }
+    
+    .post-body {
+      font-size: 18px !important
+    }
     body {
       color: #555;
     }
