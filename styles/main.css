@@ -2056,12 +2056,12 @@ p > code {
     }body {
       background-color: #eee;
     }.header {
-        width: 960px;
+        width: 1080px;
         margin: 0 auto;
       }
 
       .main-continer {
-        width: 960px;
+        width: 1080px;
         margin: 0 auto;
       }
     body {
@@ -2177,8 +2177,6 @@ p > code {
     }
     .mist .site-title i {
       background: #FFFFFFe5;
-    }.box-scale > #landlord {
-      transform: scale(0.5);
     }.box-shadow-wrapper {
       padding: 10px;
     }.box-shadow-wrapper {
