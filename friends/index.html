@@ -9,14 +9,14 @@
 <meta name="description" content="今日事，今日毕">
 <meta name="theme-color" content="#000">
 <title>Vccyb</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1596266063584">
+<link rel="shortcut icon" href="/favicon.ico?v=1596290060133">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
   href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Rosario:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext"
   rel="stylesheet" type="text/css">
 
-<link href="/media/hljs/styles/default.css"
+<link href="/media/hljs/styles/rainbow.css"
   rel="stylesheet">
 
 <link rel="stylesheet" href="/styles/main.css">
@@ -184,7 +184,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">2</span>
+        <span class="site-item-stat-count">3</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -515,6 +515,228 @@
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://vccyb.github.io/./post/leetcode_week01/"" data-c="
+          &lt;h2 id=&#34;leetcode-1-两数之和&#34;&gt;LeetCode 1 两数之和&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;要注意这个题是有个前提条件的，即每种输入只有一种答案&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        //1. 特判
+        if(nums == null || nums.length == 0){
+            return new int[]{-1, -1};
+        }
+        //2. 利用Map特性，存储每个点的值和所对应的下标
+        Map&amp;lt;Integer, Integer&amp;gt; map = new HashMap&amp;lt;Integer, Integer&amp;gt;();
+        for(int i = 0; i&amp;lt;nums.length; i++){
+            if(map.containsKey(target - nums[i])){
+                 //是否含有目标值，即target-nums[i]
+                return new int[]{map.get(target - nums[i]), i}; //获取下标并返回
+            }
+            map.put(nums[i], i);
+        }
+        return new int[]{-1, -1};
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;hashMap 插入，查询都是O(1),n重循环&lt;br&gt;
+时间复杂度O(n)&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;leetcode-2-两数相加&#34;&gt;LeetCode 2 两数相加&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;这个题是模拟，有个小技巧就是虚拟头节点&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode dummy = new ListNode(0); //虚拟头节点
+        ListNode cur = dummy;
+        int t = 0;
+        while(l1!=null || l2!= null){
+            //l1 或者是 l2 没有循环完毕
+            if(l1 != null){
+                t += l1.val;
+                l1 = l1.next;
+            }
+
+            if(l2 != null){
+                t += l2.val;
+                l2 = l2.next;
+            }
+
+            cur.next = new ListNode(t%10); //
+            t/=10;
+
+            cur = cur.next; 
+        }
+        if(t != 0) cur.next = new ListNode(t);
+        return dummy.next;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;leetcode-3-无重复字符的最长子串&#34;&gt;LeetCode 3 无重复字符的最长子串&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;本质，双指针算法，使用的前提就是单调性&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        Map&amp;lt;Character, Integer&amp;gt; map = new HashMap&amp;lt;Character, Integer&amp;gt;();
+        int ans = 0;
+        for(int i=0,j=0;i&amp;lt;s.length();i++){
+            map.put(s.charAt(i), map.getOrDefault(s.charAt(i),0)+1);
+            //判断i位置的元素是否有重复
+            while(map.get(s.charAt(i))&amp;gt;1){
+                map.put(s.charAt(j),map.get(s.charAt(j))-1);
+                j++;
+            }
+            ans = Math.max(ans, i-j+1);
+        }
+        return ans;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;leetcode-4-寻找两个正序数组中的中位数&#34;&gt;LeetCode 4 寻找两个正序数组中的中位数&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;困难题！！！&lt;br&gt;
+&lt;strong&gt;暴力基本解法&lt;/strong&gt;&lt;br&gt;
+思路：开辟一个新的数组&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        int[] nums;
+        int m = nums1.length;
+        int n = nums2.length;
+        nums = new int[n+m];
+        if(m==0){
+            if(n%2==0){
+                return (nums2[n/2 -1] + nums2[n/2]) / 2.0;
+            }else{
+                return nums2[n/2];
+            }
+        }
+
+        if(n==0){
+            if(m%2==0){
+                return (nums1[m/2 -1] + nums1[m/2]) / 2.0;
+            }else{
+                return nums1[m/2];
+            }
+        }
+
+        int count = 0;
+        int i=0,j=0;
+        while(count!=(m+n)){
+            if(i==m){
+                while(j!=n){
+                    nums[count++] = nums2[j++];
+                }
+                break;
+            }
+
+            if(j==n){
+                while(i!=m){
+                    nums[count++] = nums1[i++];
+                }
+                break;
+            }
+
+            if(nums1[i]&amp;lt;nums2[j]){
+                nums[count++] = nums1[i++];
+            }else{
+                nums[count++] = nums2[j++];
+            }
+        }
+
+        if(count%2==0){
+            return (nums[count/2 - 1]+ nums[count/2]) / 2.0;
+        }else{
+            return nums[count/2];
+        }
+
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://gitee.com/vccyb/tuc/raw/master/LeetCode/Week01/01.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;时间复杂度O(m+n) 还开辟了新的数组，不符合题目要求&lt;/p&gt;
+&lt;p&gt;递归做法&lt;br&gt;
+思路转化为找第k小的数，每次可以省略一般2/k的数&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        int total = nums1.length + nums2.length;
+        if(total % 2 == 0){
+            int left  = f(nums1, 0, nums2, 0, total/2);
+            int right = f(nums1, 0, nums2, 0, total/2 + 1);
+            return (left+right) / 2.0;
+        }else{
+            return f(nums1, 0, nums2, 0, total/2+1);
+        }
+    }
+
+
+    static int f(int[] nums1, int i, int[] nums2, int j, int k){
+        if(nums1.length - i &amp;gt; nums2.length - j) return f(nums2,j,nums1,i,k);
+
+        if(nums1.length==i) return nums2[j+k-1]; //序列1用完了，直接返回
+        if(k==1) return Math.min(nums1[i],nums2[j]); //最终k==1 了 比较一下返回
+        int si = Math.min(nums1.length, i + k/2), sj = j + k- k/2;
+        if(nums1[si-1] &amp;gt; nums2[sj-1]){
+            return f(nums1,i,nums2,sj,k-(sj-j));
+        }else{
+            return f(nums1,si,nums2,j,k-(si-i));
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;2&#34;&gt;&lt;img src=&#34;https://gitee.com/vccyb/tuc/raw/master/LeetCode/Week01/02.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;leetcode-5-最长回文子串&#34;&gt;LeetCode 5 最长回文子串&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;思路：1、枚举数组中的每个位置i，从当前位置开始向两边扩散，&lt;br&gt;
+2、当回文子串是奇数时，从i开始往两边扩散，&lt;br&gt;
+3、当回文子串是偶数时，从i，i + 1开始往两边扩散&lt;br&gt;
+4、找到以i为中心的最长回文子串的长度，若存在回文子串比以前的长，则更新回文串的长度maxv，以及两端的位置l和r&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    public String longestPalindrome(String s) {
+        if(s==null||&amp;quot;&amp;quot;.equals(s)) return s;
+        String res = Character.toString(s.charAt(0));
+        for(int i=0;i&amp;lt;s.length();i++){
+            //回文长是奇数
+            int left = i-1, right = i+1;
+            while(left&amp;gt;=0 &amp;amp;&amp;amp; right &amp;lt; s.length() &amp;amp;&amp;amp; s.charAt(left)==s.charAt(right)){
+                if(right - left + 1&amp;gt; res.length()){
+                    res = s.substring(left, right+1);
+                }
+                left--;right++;
+            }
+
+            //偶数情况下
+            left = i;right = i+1;
+            while(left&amp;gt;=0 &amp;amp;&amp;amp; right &amp;lt; s.length() &amp;amp;&amp;amp; s.charAt(left)==s.charAt(right)){
+                if(right - left + 1&amp;gt; res.length()){
+                    res = s.substring(left, right+1);
+                }
+                left--;right++;
+            }
+        }
+        return res;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+">LeetCode_Week01</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://vccyb.github.io/./post/kai-shi/"" data-c="
