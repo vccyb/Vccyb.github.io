@@ -9,7 +9,7 @@
 <meta name="description" content="今日事，今日毕">
 <meta name="theme-color" content="#000">
 <title>Vccyb</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1596291367572">
+<link rel="shortcut icon" href="/favicon.ico?v=1596351314205">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -184,7 +184,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">3</span>
+        <span class="site-item-stat-count">4</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -235,6 +235,10 @@
           <small class="language" data-lan="tag">标签</small>
         </h2>
       </div>
+      
+      
+      
+      
       
       
       
@@ -475,6 +479,116 @@
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://vccyb.github.io/./post/leetcode_week01xia/"" data-c="
+          &lt;h2 id=&#34;leetcode-6-z字形变换&#34;&gt;LeetCode 6 Z字形变换&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;找规律的题目，多在草稿纸上试一试&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    public String convert(String s, int n) {
+        if(n==1) return s;
+        StringBuilder res = new StringBuilder();
+        for(int i=0;i&amp;lt;n;i++){
+            if(i==0||i==n-1){
+                for(int j=i;j&amp;lt;s.length();j+=2*n-2){
+                    res.append(s.charAt(j));
+                }
+            }else{
+                for(int a=i,b=2*n-2-a;a&amp;lt;s.length() || b&amp;lt;s.length(); a+=2*n-2,b+=2*n-2){
+                    if(a&amp;lt;s.length()) res.append(s.charAt(a));
+                    if(b&amp;lt;s.length()) res.append(s.charAt(b));
+                }
+            }
+
+        }
+        return res.toString();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;注意：除了第一行和导数第一行，可以看为两个等差数组 2*n-2&lt;/p&gt;
+&lt;h2 id=&#34;leetcode-7-整数反转&#34;&gt;LeetCode 7 整数反转&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    public int reverse(int x) {
+        long res = 0;
+        while(x!=0){
+            res = res*10 + x%10;
+            x/=10;
+        }
+        if(res &amp;gt; Integer.MAX_VALUE) return 0;
+        if(res &amp;lt; Integer.MIN_VALUE) return 0;
+        return (int)res;
+    }
+}
+
+
+//不适用long
+class Solution {
+    public int reverse(int x) {
+        int res = 0;
+        while(x!=0){
+            if(res &amp;gt; 0 &amp;amp;&amp;amp; res &amp;gt; (Integer.MAX_VALUE - x%10)/10) return 0;
+            if(res &amp;lt; 0 &amp;amp;&amp;amp; res &amp;lt; (Integer.MIN_VALUE - x%10)/10) return 0;
+            res = res*10 + x%10;
+            x/=10;
+        }
+
+        return (int)res;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;leetcode-8-字符串转整数&#34;&gt;LeetCode 8 字符串转整数&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;class Solution {
+    public int myAtoi(String str) {
+        int n = str.length();
+        int k = 0;
+        while(k &amp;lt; n &amp;amp;&amp;amp; str.charAt(k)==&#39; &#39;) k++;
+        if(k==n) return 0;
+
+        int op = 1;
+        if(str.charAt(k)==&#39;-&#39;){
+            op = -1;
+            k ++;
+        }else if(str.charAt(k) == &#39;+&#39;) k++;
+
+        long res = 0;
+        while(k&amp;lt;n &amp;amp;&amp;amp; str.charAt(k)&amp;gt;=&#39;0&#39; &amp;amp;&amp;amp; str.charAt(k)&amp;lt;=&#39;9&#39;){
+            res = res * 10 + str.charAt(k) - &#39;0&#39;;
+            k ++;
+
+            if(res &amp;gt; Integer.MAX_VALUE) break;
+        }
+
+        res = res * op;
+        if(res &amp;gt; Integer.MAX_VALUE) res = Integer.MAX_VALUE;
+        if(res &amp;lt; Integer.MIN_VALUE) res = Integer.MIN_VALUE;
+
+        return (int)res;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;leetcode-9-回文数&#34;&gt;LeetCode 9 回文数&lt;/h2&gt;
+&lt;pre&gt;&lt;code class=&#34;language-java&#34;&gt;//不适用String去做
+class Solution {
+    public boolean isPalindrome(int x) {
+        if(x&amp;lt;0) return false;
+        int res = 0;
+        int x_back = x;
+        while(x!=0){
+            res = res*10 + x%10;
+            x/=10;
+        }
+        return res==x_back;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;leetcode-10-正则表达式匹配&#34;&gt;LeetCode 10 正则表达式匹配&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;dp 难题，先空着&lt;/p&gt;
+&lt;/blockquote&gt;
+">LeetCode_Week01(下)</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://vccyb.github.io/./post/leetcode_week01/"" data-c="

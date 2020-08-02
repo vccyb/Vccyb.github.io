@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://vccyb.github.io/.</id>
     <title>Vccyb</title>
-    <updated>2020-08-01T14:16:34.449Z</updated>
+    <updated>2020-08-02T06:55:24.094Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://vccyb.github.io/."/>
     <link rel="self" href="https://vccyb.github.io/./atom.xml"/>
@@ -10,6 +10,119 @@
     <logo>https://vccyb.github.io/./images/avatar.png</logo>
     <icon>https://vccyb.github.io/./favicon.ico</icon>
     <rights>All rights reserved 2020, Vccyb</rights>
+    <entry>
+        <title type="html"><![CDATA[LeetCode_Week01(下)]]></title>
+        <id>https://vccyb.github.io/./post/leetcode_week01xia/</id>
+        <link href="https://vccyb.github.io/./post/leetcode_week01xia/">
+        </link>
+        <updated>2020-08-02T05:08:58.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="leetcode-6-z字形变换">LeetCode 6 Z字形变换</h2>
+<blockquote>
+<p>找规律的题目，多在草稿纸上试一试</p>
+</blockquote>
+<pre><code class="language-java">class Solution {
+    public String convert(String s, int n) {
+        if(n==1) return s;
+        StringBuilder res = new StringBuilder();
+        for(int i=0;i&lt;n;i++){
+            if(i==0||i==n-1){
+                for(int j=i;j&lt;s.length();j+=2*n-2){
+                    res.append(s.charAt(j));
+                }
+            }else{
+                for(int a=i,b=2*n-2-a;a&lt;s.length() || b&lt;s.length(); a+=2*n-2,b+=2*n-2){
+                    if(a&lt;s.length()) res.append(s.charAt(a));
+                    if(b&lt;s.length()) res.append(s.charAt(b));
+                }
+            }
+
+        }
+        return res.toString();
+    }
+}
+</code></pre>
+<p>注意：除了第一行和导数第一行，可以看为两个等差数组 2*n-2</p>
+<h2 id="leetcode-7-整数反转">LeetCode 7 整数反转</h2>
+<pre><code class="language-java">class Solution {
+    public int reverse(int x) {
+        long res = 0;
+        while(x!=0){
+            res = res*10 + x%10;
+            x/=10;
+        }
+        if(res &gt; Integer.MAX_VALUE) return 0;
+        if(res &lt; Integer.MIN_VALUE) return 0;
+        return (int)res;
+    }
+}
+
+
+//不适用long
+class Solution {
+    public int reverse(int x) {
+        int res = 0;
+        while(x!=0){
+            if(res &gt; 0 &amp;&amp; res &gt; (Integer.MAX_VALUE - x%10)/10) return 0;
+            if(res &lt; 0 &amp;&amp; res &lt; (Integer.MIN_VALUE - x%10)/10) return 0;
+            res = res*10 + x%10;
+            x/=10;
+        }
+
+        return (int)res;
+    }
+}
+</code></pre>
+<h2 id="leetcode-8-字符串转整数">LeetCode 8 字符串转整数</h2>
+<pre><code class="language-java">class Solution {
+    public int myAtoi(String str) {
+        int n = str.length();
+        int k = 0;
+        while(k &lt; n &amp;&amp; str.charAt(k)==' ') k++;
+        if(k==n) return 0;
+
+        int op = 1;
+        if(str.charAt(k)=='-'){
+            op = -1;
+            k ++;
+        }else if(str.charAt(k) == '+') k++;
+
+        long res = 0;
+        while(k&lt;n &amp;&amp; str.charAt(k)&gt;='0' &amp;&amp; str.charAt(k)&lt;='9'){
+            res = res * 10 + str.charAt(k) - '0';
+            k ++;
+
+            if(res &gt; Integer.MAX_VALUE) break;
+        }
+
+        res = res * op;
+        if(res &gt; Integer.MAX_VALUE) res = Integer.MAX_VALUE;
+        if(res &lt; Integer.MIN_VALUE) res = Integer.MIN_VALUE;
+
+        return (int)res;
+    }
+}
+</code></pre>
+<h2 id="leetcode-9-回文数">LeetCode 9 回文数</h2>
+<pre><code class="language-java">//不适用String去做
+class Solution {
+    public boolean isPalindrome(int x) {
+        if(x&lt;0) return false;
+        int res = 0;
+        int x_back = x;
+        while(x!=0){
+            res = res*10 + x%10;
+            x/=10;
+        }
+        return res==x_back;
+    }
+}
+</code></pre>
+<h2 id="leetcode-10-正则表达式匹配">LeetCode 10 正则表达式匹配</h2>
+<blockquote>
+<p>dp 难题，先空着</p>
+</blockquote>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[LeetCode_Week01(上)]]></title>
         <id>https://vccyb.github.io/./post/leetcode_week01/</id>
