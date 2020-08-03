@@ -2167,6 +2167,12 @@ p > code {
     }.bg-color {
       background-color: #ffffffe5;
     }
+    .gemini .blog-header, .gemini .sidebar-wrapper, .gemini .article-wrapper, .gemini .post, .gemini .page, .gemini .section, .gemini .section-box, .gemini .sidebar-box, .gemini .friends-section {
+      border-radius: 10px;
+    }
+    .pisces .blog-header, .pisces .sidebar-wrapper, .pisces .article-wrapper, .pisces .section, .pisces .sidebar-box, .pisces .friends-section {
+      border-radius: 10px;
+    }
     .site-meta {
       background: #000 !important;
     }
@@ -2181,6 +2187,8 @@ p > code {
     }
     .mist .site-title i {
       background: #FFFFFFe5;
+    }.box-shadow-wrapper {
+      padding: 10px;
     }.box-shadow-wrapper {
       box-shadow: none !important;
     }body {
