@@ -1,0 +1,1 @@
+import{d as o,y as c,z as n,D as _,o as a,a as s,_ as r}from"./framework.f96a9780.js";const p=o({__name:"buttonClick",setup(l){const t=()=>{alert("Are you ok")};return(u,i)=>{const e=_("y-button");return a(),c(e,{type:"primary",onClick:t},{default:n(()=>[s(" primary ")]),_:1})}}});const m=r(p,[["__scopeId","data-v-8c5ac013"]]);export{m as default};
