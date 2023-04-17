@@ -1,1 +1,0 @@
-import{_ as s,c as a,o as n,N as l}from"./chunks/framework.f96a9780.js";const A=JSON.parse('{"title":"这是组件库的开发日志","description":"","frontmatter":{},"headers":[],"relativePath":"developLog/index.md"}'),p={name:"developLog/index.md"},o=l("",44),e=[o];function t(c,r,D,y,i,C){return n(),a("div",null,e)}const d=s(p,[["render",t]]);export{A as __pageData,d as default};

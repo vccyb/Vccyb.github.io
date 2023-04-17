@@ -1,0 +1,1 @@
+import{_ as s,c as a,C as o,o as _,D as t}from"./framework.31b2364c.js";const c={},n={},d={class:"display-box"};function i(r,l){const e=t("y-icon");return _(),a("div",d,[o(e,{name:"loading"}),o(e,{name:"gou1"}),o(e,{name:"search"}),o(e,{name:"close"})])}typeof c=="function"&&c(n);const m=s(n,[["render",i],["__scopeId","data-v-b0ecdda6"]]);export{m as default};
